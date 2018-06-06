@@ -1,0 +1,148 @@
+-------------------------
+basic commands
+--------------------------
+poweroff
+reboot 
+clear
+
+---------------------
+ls
+ls -a
+ls -l
+ls -lh
+ls -lt
+ls -ltr
+pwd
+
+-----------------
+creating directory
+-----------------
+mkdir dir
+mkdir -p dir/dir1/dur2
+
+
+------------------
+creating files
+-----------------
+touch file.txt
+touch desktop.file.txt
+
+-----------------------
+delete directory
+-----------------------
+
+rmdir dir1 (delete only empty directory)
+rm -r dir 
+rm -rf dir
+-----------------------
+delete file
+-----------------------
+ 
+rm file.txt  (ask yes/no)
+rm -f file.txt  (not ask)
+rm -vf file.txt  (not ask + status of file)
+rm -rf file.txt
+---------------------------
+copy file
+--------------------------
+cp f.txt dir   (single file to directory)
+cp /root/f1.txt /root/f2.txt /root/f3.txt /root/dir    (multiple file to directory)
+cp file.txt .     (copy file to same directory)
+
+
+-------------------------
+copy directory
+-------------------------
+
+cp -r dir1 dir2
+
+-----------------------
+move files
+-----------------------
+mv t.txt dir
+
+
+
+
+
+-----------------------
+move dir
+----------------------
+mv -f dir1 dir2
+
+-----------------------
+rename file 
+-----------------------
+
+mv file file.txt
+
+
+---------------------
+rename directory
+---------------------
+
+
+mv dirc dirf
+
+
+-------------------------------------
+print content of file on screen
+------------------------------------
+
+cat file.txt         (open file in console)
+cat >tork.txt        (to create new file)
+cat  /etc/passwd > passwd.txt   (to copy content from one file to another)
+
+less file.txt         (enter pointer in file itself)
+/abc                      (to search anything in less)
+
+---------------------------
+  |   PIP
+--------------------------
+used to add more than one command
+eg: ls | cat
+
+--------------------------------------
+archive any directory in .tar format
+--------------------------------------
+
+tar -cvf document.tar document       (to zip)
+tar -xvf document.tar                   (to unzip)
+tar -tvf document.tar                  (to see files inside tar file)
+tar -rvf document.tar passwd.txt          (add more file to tar)
+
+--------------------------------------
+compress any directory in gzip,bzip format
+--------------------------------------
+create new file million.txt
+seq 1000000>million.txt  (sequence of 1-1000000 in million.txt)
+ls -lh          (to see size of million.txt)
+gzip million.txt         (to zip in million.txt.gz)
+gzip -d million.txt.gz    (to unzip to million.txt)
+   or
+gunzip million.txt.tz
+
+bzip2 million.txt      (to zip in million.txt.bz2)
+bunzip2 million.txt.bz2     (to unzip)
+-------------------------------------------
+archive and compression using tar
+-------------------------------------------
+      archive/compression
+tar -zcvf public.tar.gz  public 
+tar -jcvf public.tar.bz2  public
+
+       unzip
+tar -xvf public.tar.gz
+tar -xvf public.tar.bz2
+
+------------------------------------------------------------
+soft link (creating shortcut - a pointer to original file)
+------------------------------------------------------------
+
+ln -s /root/file.txt   /root/desktop/file-shortcut
+stat /root/desktop/file-shortcut   (to look details of file)
+
+---------------------------------------------------------
+hard link
+---------------------------------------------------------
+ln  /root/file.txt   /root/desktop/file-shortcut  (allows to change in file directly)  
