@@ -1,73 +1,148 @@
-Linux Commands
-===============
+-------------------------
+basic commands
+--------------------------
+poweroff
+reboot 
+clear
 
-man   : Displays the manual of any command
-cal   : Displays the calendar of the current month
-date  : displays the current date and time
+---------------------
+ls
+ls -a
+ls -l
+ls -lh
+ls -lt
+ls -ltr
+pwd
 
-~       : home of the current user
-pwd     : present working directory
-history : 
-
-File System
-============
-
-mkdir : make directory
-mv    : move/rename
-cp    : copy
-rmdir : remove directory
-
-ls  : list all files in the current directory
-  -l  : long listing
-  -a  : all files (includes hidden files and folders)
-  -r  : reverse order
-  -t  : sorts according to user modified time
-
-cd  : change directory
-  ..  : up one level directory
-  .   : change to the current directory (no change, basically)
-
-rm  : remove file
-  -r  : recursive delete
-  -f  : force delete (ignore all the warnings)
-
-Note: Never use "rm -rf /". It removes the whole Linux FileSystem without giving any warnings.
-
-touch   : creates a new file if does not exist or changes the modified time to current time
-echo    : Used to print a message to the terminal
-cat     : Concatenates one or more files and prints them in the terminal (by default)
-printf  : Used to print a message to the terminal
-nano    : Opens the file or creates a new file in nano editor
-wc      : Word Count. Prints the number of lines, words and byte count of a file
+-----------------
+creating directory
+-----------------
+mkdir dir
+mkdir -p dir/dir1/dur2
 
 
+------------------
+creating files
+-----------------
+touch file.txt
+touch desktop.file.txt
 
-Navigation
-===========
+-----------------------
+delete directory
+-----------------------
 
-more  : Used to display file but can only navigate in one direction (forward). No backward movement allowed.
-less  : Used to display file and it allows both forward and backward movement. This is used most often.
-most  : All the features of less plus some more.
-head  : Displays head (starting lines) of a file (by default 10 lines).
-tail  : Displays tail (ending lines) of a file (by default 10 lines).
+rmdir dir1 (delete only empty directory)
+rm -r dir 
+rm -rf dir
+-----------------------
+delete file
+-----------------------
+ 
+rm file.txt  (ask yes/no)
+rm -f file.txt  (not ask)
+rm -vf file.txt  (not ask + status of file)
+rm -rf file.txt
+---------------------------
+copy file
+--------------------------
+cp f.txt dir   (single file to directory)
+cp /root/f1.txt /root/f2.txt /root/f3.txt /root/dir    (multiple file to directory)
+cp file.txt .     (copy file to same directory)
 
 
-file  : Used to determine the type of file.
-diff  : Used to see differences between two files.
-tee   : Used to print the standard output in terminal as well as save it in a file.
+-------------------------
+copy directory
+-------------------------
+
+cp -r dir1 dir2
+
+-----------------------
+move files
+-----------------------
+mv t.txt dir
 
 
-grep  : Global search a Regular Expression and Print.
-fg    : Brings all the background processes in the foreground.
 
 
-which   : Locate a command in FileSystem
-type    : displays the type of linux command
-help    : displays help of the command
-tar     : Used to create/extract tarballs
-ps      : Displays the snapshot of the current running processes
-top     : display linux processes
-kill    : sends kill signal to a process
-du      : estimate file disk usage(recursively calculates for each file in the curent directory)
-fdisk
-fsck
+
+-----------------------
+move dir
+----------------------
+mv -f dir1 dir2
+
+-----------------------
+rename file 
+-----------------------
+
+mv file file.txt
+
+
+---------------------
+rename directory
+---------------------
+
+
+mv dirc dirf
+
+
+-------------------------------------
+print content of file on screen
+------------------------------------
+
+cat file.txt         (open file in console)
+cat >tork.txt        (to create new file)
+cat  /etc/passwd > passwd.txt   (to copy content from one file to another)
+
+less file.txt         (enter pointer in file itself)
+/abc                      (to search anything in less)
+
+---------------------------
+  |   PIP
+--------------------------
+used to add more than one command
+eg: ls | cat
+
+--------------------------------------
+archive any directory in .tar format
+--------------------------------------
+
+tar -cvf document.tar document       (to zip)
+tar -xvf document.tar                   (to unzip)
+tar -tvf document.tar                  (to see files inside tar file)
+tar -rvf document.tar passwd.txt          (add more file to tar)
+
+--------------------------------------
+compress any directory in gzip,bzip format
+--------------------------------------
+create new file million.txt
+seq 1000000>million.txt  (sequence of 1-1000000 in million.txt)
+ls -lh          (to see size of million.txt)
+gzip million.txt         (to zip in million.txt.gz)
+gzip -d million.txt.gz    (to unzip to million.txt)
+   or
+gunzip million.txt.tz
+
+bzip2 million.txt      (to zip in million.txt.bz2)
+bunzip2 million.txt.bz2     (to unzip)
+-------------------------------------------
+archive and compression using tar
+-------------------------------------------
+      archive/compression
+tar -zcvf public.tar.gz  public 
+tar -jcvf public.tar.bz2  public
+
+       unzip
+tar -xvf public.tar.gz
+tar -xvf public.tar.bz2
+
+------------------------------------------------------------
+soft link (creating shortcut - a pointer to original file)
+------------------------------------------------------------
+
+ln -s /root/file.txt   /root/desktop/file-shortcut
+stat /root/desktop/file-shortcut   (to look details of file)
+
+---------------------------------------------------------
+hard link
+---------------------------------------------------------
+ln  /root/file.txt   /root/desktop/file-shortcut  (allows to change in file directly)  
